@@ -297,15 +297,11 @@ namespace HanselChain
 			{
 				if (A.Contains(p))
 				{
-					if (p.gfuncValue == null)
-					{
-						continue;
-					}
-					if (p.gfuncValue == 1)
+					if (p.realValue == 1)
 					{
 						b1++;
 					}
-					else if (p.gfuncValue == 0)
+					else if (p.realValue == 0)
 					{
 						b0++;
 					}
@@ -318,15 +314,11 @@ namespace HanselChain
 			{
 				if (A.Contains(p))
 				{
-					if (p.gfuncValue == null)
-					{
-						continue;
-					}
-					if (p.gfuncValue == 1)
+					if (p.realValue == 1)
 					{
 						a1++;
 					}
-					else
+					else if (p.realValue == 0)
 					{
 						a0++;
 					}
