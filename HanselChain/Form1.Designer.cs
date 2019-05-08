@@ -62,8 +62,8 @@
 			this.listGFunc = new System.Windows.Forms.ListView();
 			this.gID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.gCoordinate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-			this.label6 = new System.Windows.Forms.Label();
 			this.value = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.label6 = new System.Windows.Forms.Label();
 			this.contextMenuCube.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -122,7 +122,7 @@
 			this.listB.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.IDB,
             this.CoordinateB});
-			this.listB.Location = new System.Drawing.Point(1391, 33);
+			this.listB.Location = new System.Drawing.Point(1422, 33);
 			this.listB.Name = "listB";
 			this.listB.Size = new System.Drawing.Size(440, 397);
 			this.listB.TabIndex = 0;
@@ -151,7 +151,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(1387, 6);
+			this.label3.Location = new System.Drawing.Point(1418, 6);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(22, 24);
 			this.label3.TabIndex = 2;
@@ -216,9 +216,9 @@
 			this.listQuery.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Step,
             this.Coordinate});
-			this.listQuery.Location = new System.Drawing.Point(1127, 33);
+			this.listQuery.Location = new System.Drawing.Point(1110, 33);
 			this.listQuery.Name = "listQuery";
-			this.listQuery.Size = new System.Drawing.Size(239, 397);
+			this.listQuery.Size = new System.Drawing.Size(306, 397);
 			this.listQuery.TabIndex = 8;
 			this.listQuery.UseCompatibleStateImageBehavior = false;
 			this.listQuery.View = System.Windows.Forms.View.Details;
@@ -320,7 +320,7 @@
             this.gID,
             this.gCoordinate,
             this.value});
-			this.listGFunc.Location = new System.Drawing.Point(1849, 33);
+			this.listGFunc.Location = new System.Drawing.Point(1880, 33);
 			this.listGFunc.Name = "listGFunc";
 			this.listGFunc.Size = new System.Drawing.Size(477, 397);
 			this.listGFunc.TabIndex = 0;
@@ -337,19 +337,19 @@
 			this.gCoordinate.Text = "Coordinate";
 			this.gCoordinate.Width = 150;
 			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(1845, 6);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(118, 24);
-			this.label6.TabIndex = 2;
-			this.label6.Text = "Black box";
-			// 
 			// value
 			// 
 			this.value.Text = "Value";
 			this.value.Width = 80;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(1876, 6);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(118, 24);
+			this.label6.TabIndex = 2;
+			this.label6.Text = "Black box";
 			// 
 			// Form1
 			// 

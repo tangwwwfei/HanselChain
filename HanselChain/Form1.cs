@@ -75,7 +75,7 @@ namespace HanselChain
 				runAlgorithm = null;
 				
 			}
-			Refresh();
+			CubeRepaint();
 		}
 
 		//递归生成Hansel链
@@ -128,6 +128,23 @@ namespace HanselChain
 			paintCube.chains = hcs;
 			paintCube.askedList = queryList;
 			paintCube.GenerateCube();
+		}
+
+		private void CubeRepaint()
+		{
+			Rectangle rect = cube_show.ClientRectangle;
+			BufferedGraphicsContext currentContext = BufferedGraphicsManager.Current;
+			Graphics eg = cube_show.CreateGraphics();
+			BufferedGraphics myBuffer = currentContext.Allocate(eg, rect);
+			Graphics g = myBuffer.Graphics;
+			g.SmoothingMode = SmoothingMode.HighQuality;
+			g.PixelOffsetMode = PixelOffsetMode.HighSpeed;
+			g.Clear(BackColor);
+			paintCube.Paint(cube_show.Width, g);
+			myBuffer.Render(eg);
+			g.Dispose();
+
+			myBuffer.Dispose();//释放资源
 		}
 
 		private void Cube_show_Paint(object sender, PaintEventArgs e)
@@ -188,15 +205,25 @@ namespace HanselChain
 			paintCube.askedList = queryList;
 			NPoint G = functionInference.G;
 			//更新B控件
-			listB.Items.Clear();
 			listB.BeginUpdate();
+			listB.Items.Clear();
+			//if (listB.Items.Count < B.Count)
+			//{
 			for (int i = 0; i < B.Count; i++)
 			{
 				ListViewItem lvi = new ListViewItem();
-				lvi.Text = (i+1).ToString();
+				lvi.Text = (i + 1).ToString();
 				lvi.SubItems.Add(B[i].ToString());
 				listB.Items.Add(lvi);
 			}
+			//}
+			//else
+			//{
+			//	for (int i = B.Count; i < listB.Items.Count; i++)
+			//	{
+			//		listB.Items.RemoveAt(i);
+			//	}	
+			//}
 			listB.EndUpdate();
 
 			listA.BeginUpdate();
@@ -208,14 +235,16 @@ namespace HanselChain
 				lvi.Text = (listA.Items.Count+1).ToString();
 				//lvi.ForeColor = Color.Red;
 				lvi.SubItems.Add(A[i].ToString());
+				lvi.SubItems.Add(A[i].realValue.ToString());
+				lvi.SubItems.Add(A[i].gfuncValue.ToString());
 				listA.Items.Add(lvi);
 			}
 			listA.EndUpdate();
 
 			listQuery.BeginUpdate();
 			//更新Query控件
-			listQuery.Items.Clear();
-			for (int i = 0; i < queryList.Count; i++)
+			//listQuery.Items.Clear();
+			for (int i = listQuery.Items.Count; i < queryList.Count; i++)
 			{
 				ListViewItem lvi = new ListViewItem();
 				lvi.Text = (listQuery.Items.Count + 1).ToString();
@@ -234,9 +263,9 @@ namespace HanselChain
 			//更新函数g
 			listGFunc.BeginUpdate();
 			//更新Query控件
-			listGFunc.Items.Clear();
+			//listGFunc.Items.Clear();
 			List<NPoint> gps = GFunction.getInstance().mapGValue.Values.ToList<NPoint>();
-			for (int i = 0; i < gps.Count; i++)
+			for (int i = listGFunc.Items.Count; i < gps.Count; i++)
 			{
 				ListViewItem lvi = new ListViewItem();
 				lvi.Text = (listGFunc.Items.Count + 1).ToString();
@@ -247,7 +276,7 @@ namespace HanselChain
 			}
 			listGFunc.EndUpdate();
 
-			cube_show.Refresh();
+			CubeRepaint();
 		}
 
 		private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -260,8 +289,9 @@ namespace HanselChain
 
 		private void CreateFunc_Click(object sender, EventArgs e)
 		{
+			GFunction.getInstance().mapGValue.Clear();
 			//所有点的G值设为0，并显示
-			foreach(HanselChain hc in forDesign)
+			foreach (HanselChain hc in forDesign)
 			{
 				foreach(NPoint p in hc.chain)
 				{
@@ -269,7 +299,8 @@ namespace HanselChain
 					GFunction.getInstance().mapGValue.Add(p.toInt(), p);
 				}
 			}
-			cube_show.Refresh();
+
+			CubeRepaint();
 		}
 
 		private void SaveFunc_Click(object sender, EventArgs e)
@@ -278,7 +309,8 @@ namespace HanselChain
 
 			//重新初始化Cube
 			InitPaintCube(nDim, result);
-			cube_show.Refresh();
+			CubeRepaint();
+			//cube_show.Refresh();
 		}
 
 		private void Cube_show_MouseClick(object sender, MouseEventArgs e)
@@ -294,7 +326,8 @@ namespace HanselChain
 						break;
 					}
 				}
-				cube_show.Refresh();
+
+				CubeRepaint();
 			}
 			else if (e.Button == MouseButtons.Right)
 			{
@@ -312,7 +345,7 @@ namespace HanselChain
 					//GFunction.getInstance().mapGValue.Add(p.toInt(), p);
 				}
 			}
-			cube_show.Refresh();
+			CubeRepaint();
 		}
 
 		private void LoadfuncMenuItem_Click(object sender, EventArgs e)
@@ -360,7 +393,7 @@ namespace HanselChain
 			{
 				ps[i].gfuncValue = node.points[i].gfuncValue;
 			}
-			cube_show.Refresh();
+			CubeRepaint();
 		}
 
 		private void Form1_Load(object sender, EventArgs e)
