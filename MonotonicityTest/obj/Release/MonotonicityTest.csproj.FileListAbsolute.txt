@@ -1,7 +1,0 @@
-C:\Users\tangs\source\repos\MonotonicityTest\bin\Release\MonotonicityTest.exe.config
-C:\Users\tangs\source\repos\MonotonicityTest\bin\Release\MonotonicityTest.exe
-C:\Users\tangs\source\repos\MonotonicityTest\bin\Release\MonotonicityTest.pdb
-C:\Users\tangs\source\repos\MonotonicityTest\obj\Release\MonotonicityTest.csproj.CoreCompileInputs.cache
-C:\Users\tangs\source\repos\MonotonicityTest\obj\Release\MonotonicityTest.exe
-C:\Users\tangs\source\repos\MonotonicityTest\obj\Release\MonotonicityTest.pdb
-C:\Users\tangs\source\repos\MonotonicityTest\obj\Release\MonotonicityTest.csprojAssemblyReference.cache
