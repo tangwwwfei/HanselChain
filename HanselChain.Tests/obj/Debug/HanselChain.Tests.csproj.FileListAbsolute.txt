@@ -1,0 +1,15 @@
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\HanselChain.Tests.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\HanselChain.Tests.pdb
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\HanselChain.exe
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\Microsoft.Pex.Framework.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\Microsoft.ExtendedReflection.Reasoning.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\Microsoft.ExtendedReflection.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\HanselChain.pdb
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\HanselChain.exe.config
+C:\Users\tangs\source\repos\HanselChain.Tests\bin\Debug\Microsoft.Pex.Framework.xml
+C:\Users\tangs\source\repos\HanselChain.Tests\obj\Debug\HanselChain.Tests.csprojAssemblyReference.cache
+C:\Users\tangs\source\repos\HanselChain.Tests\obj\Debug\HanselChain.Tests.csproj.CoreCompileInputs.cache
+C:\Users\tangs\source\repos\HanselChain.Tests\obj\Debug\HanselChain.Tests.csproj.CopyComplete
+C:\Users\tangs\source\repos\HanselChain.Tests\obj\Debug\HanselChain.Tests.dll
+C:\Users\tangs\source\repos\HanselChain.Tests\obj\Debug\HanselChain.Tests.pdb

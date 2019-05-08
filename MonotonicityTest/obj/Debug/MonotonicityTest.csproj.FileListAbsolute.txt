@@ -1,0 +1,7 @@
+C:\Users\tangs\source\repos\MonotonicityTest\obj\Debug\MonotonicityTest.csprojAssemblyReference.cache
+C:\Users\tangs\source\repos\MonotonicityTest\obj\Debug\MonotonicityTest.csproj.CoreCompileInputs.cache
+C:\Users\tangs\source\repos\MonotonicityTest\bin\Debug\MonotonicityTest.exe.config
+C:\Users\tangs\source\repos\MonotonicityTest\bin\Debug\MonotonicityTest.exe
+C:\Users\tangs\source\repos\MonotonicityTest\bin\Debug\MonotonicityTest.pdb
+C:\Users\tangs\source\repos\MonotonicityTest\obj\Debug\MonotonicityTest.exe
+C:\Users\tangs\source\repos\MonotonicityTest\obj\Debug\MonotonicityTest.pdb

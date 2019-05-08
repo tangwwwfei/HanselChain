@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GFunctions>
+  <GFunction name="全0" Dimension="5" date="2019/5/8 2:05:29">
+    <value>00000000000000000000000000000000</value>
+  </GFunction>
+  <GFunction name="test" Dimension="5" date="2019/5/8 2:05:29">
+    <value>011111111111100001111111011000001</value>
+  </GFunction>
+</GFunctions>
