@@ -27,39 +27,40 @@ namespace HanselChain
 
 		//
 		AutoResetEvent runal;
-		ListView listA, listB;
-		Label GLabel;
-		public FunctionInference(int dim, List<HanselChain> chains)
+		public FunctionInference()
 		{
-			nDim = dim;
-			HanselChains = chains;
 			A = new List<NPoint>();
 			B = new List<NPoint>();
 			asked = new List<NPoint>();
+		}
+
+		public int RunAlgorithm(AutoResetEvent runal, int dim, List<HanselChain> chains)
+		{
+			A.Clear();
+			B.Clear();
+			asked.Clear();
+			allPoints.Clear();
+			Diff = null;
+			_G = null;
+
+			this.runal = runal;
+			nDim = dim;
+			HanselChains = chains;
 			foreach (HanselChain chain in HanselChains)
 			{
 				B.AddRange(chain.chain);
 			}
 			B.Sort(
-				delegate (NPoint p1, NPoint p2){
+				delegate (NPoint p1, NPoint p2) {
 					return -p1.belong.id.CompareTo(p2.belong.id);
 				}
 			);
 			//初始化Map allPoints
-			foreach(NPoint p in B)
+			foreach (NPoint p in B)
 			{
 				allPoints.Add(p.toInt(), p);
 			}
-			//初始化lower and upper
-			foreach(NPoint p in B)
-			{
-
-			}
-		}
-
-		public int RunAlgorithm(AutoResetEvent runal, ListView listA, ListView listB, Label GLabel)
-		{
-			this.runal = runal;
+			
 			return Algorithm();
 		}
 
@@ -69,7 +70,7 @@ namespace HanselChain
 			
 			while(B.Count != 0)
 			{
-				runal.WaitOne();
+				if (runal != null) runal.WaitOne();
 				//1.选点
 				NPoint alpha_i = B[0];
 				if (asked.Count >= 1)

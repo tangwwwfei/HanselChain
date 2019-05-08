@@ -33,36 +33,16 @@ namespace HanselChain
 		private void Start_Click(object sender, EventArgs e)
 		{
 			nDim = int.Parse(n_dim.Text); //维度
-			HanselChain hc1 = new HanselChain();
-			NPoint p1 = new NPoint();
-			NPoint p2 = new NPoint();
-			p2.x = new List<int>() { 0 };
-			p1.x = new List<int>() { 1 };
-			hc1.chain.Add(p1);
-			hc1.chain.Add(p2);
-			List<HanselChain> ls = new List<HanselChain>();
-			ls.Add(hc1);
 			forDesign = new List<HanselChain>();
 			GFunction.getInstance().mapGValue.Clear();
-			result = GenerateNdimCubeAndHanselChain(nDim, 1, ls);
-			//给Hansel链排序并赋一个id
-			result.Sort();
+			result = GenerateCube.GenerateNdimCubeAndHanselChain(nDim);
 			for (int i = 0; i < result.Count; i++)
 			{
-				result[i].id = i;
 				forDesign.Add(result[i].DeepClone());
 			}
 
-			Console.Out.WriteLine(String.Format("We get {0} HanselChain(s)", result.Count));
-			foreach (HanselChain hc in result)
-			{
-				Console.Out.WriteLine(hc.ToString());
-			}
-			
-
-
 			InitPaintCube(nDim, forDesign);
-			functionInference = new FunctionInference(nDim, result);
+			functionInference = new FunctionInference();
 			Next.Text = "执行算法";
 			runal = new AutoResetEvent(false);
 			listA.Items.Clear();
@@ -78,35 +58,6 @@ namespace HanselChain
 				
 			}
 			CubeRepaint();
-		}
-
-		//递归生成Hansel链
-		public static List<HanselChain> GenerateNdimCubeAndHanselChain(int NDim, int currentDim, List<HanselChain> hcs)
-		{
-			if (currentDim >= NDim)
-			{
-				return hcs;
-			}
-			List<HanselChain> newChainLst = new List<HanselChain>();
-			foreach (HanselChain hc in hcs)
-			{
-				HanselChain hc1 = hc.DeepClone();
-				HanselChain hc2 = hc.DeepClone();
-				for (int i = 0; i < hc.chain.Count; i++)
-				{
-					hc1.chain[i].x.Insert(0, 0);    //在左侧加0
-					hc1.chain[i].belong = hc1;
-					hc2.chain[i].x.Insert(0, 1);    //在左侧加1
-					hc2.chain[i].belong = hc2;
-				}
-				NPoint minPoint = hc1.chain[hc1.chain.Count - 1].DeepClone();
-				hc1.chain.RemoveAt(hc1.chain.Count - 1);
-				minPoint.belong = hc2;
-				hc2.chain.Add(minPoint);
-				if (hc1.chain.Count != 0) newChainLst.Add(hc1);
-				if (hc2.chain.Count != 0) newChainLst.Add(hc2);
-			}
-			return GenerateNdimCubeAndHanselChain(NDim, currentDim + 1, newChainLst);
 		}
 
 		public void InitPaintCube(int nDim, List<HanselChain> hcs)
@@ -195,7 +146,7 @@ namespace HanselChain
 
 		void StartAlgorithm()
 		{
-			nAskedCount = functionInference.RunAlgorithm(runal, listA, listB, GValue);
+			nAskedCount = functionInference.RunAlgorithm(runal, nDim, result);
 			runAlgorithm = null;
 		}
 		void UpdateListView()

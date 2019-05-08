@@ -203,7 +203,7 @@ namespace MonotonicityTest
 				base2.Append(Convert.ToString(bytes[idx], 2).PadLeft(8, '0'));
 			}
 			int n = (int)Math.Pow(2, bytes.Length);
-			if (base2.Length > n && base2[n].Equals('0'))
+			if (base2.Length > n && base2[0] == '0')
 			{
 				base2 = base2.Remove(0, 1);
 			}

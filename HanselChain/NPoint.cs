@@ -44,6 +44,15 @@ namespace HanselChain
 			lower = new List<NPoint>();
 		}
 
+		public void Destory()
+		{
+			ffuncValue = null;
+			gfuncValue = null;
+			upper.Clear();
+			lower.Clear();
+
+		}
+
 		public bool IsClicked(Point pos, int radius)
 		{
 			int x = pos.X - drawPoint.X;
