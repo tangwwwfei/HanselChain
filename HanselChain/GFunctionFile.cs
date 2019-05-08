@@ -26,12 +26,7 @@ namespace HanselChain
 				node.nDim = nDim;
 				node.name = e.Attribute("name").Value;
 				String vals = e.Element("value").Value;
-				foreach(char val in vals)
-				{
-					NPoint p = new NPoint();
-					p.gfuncValue = int.Parse(""+val);
-					node.points.Insert(0, p);
-				}
+				node.gFunction = vals;
 				nodes.Add(node);
 			}
 

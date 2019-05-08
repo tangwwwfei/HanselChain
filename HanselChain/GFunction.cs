@@ -11,7 +11,30 @@ namespace HanselChain
 	class GFunction
 	{
 		static GFunction instance = null;
-		public String g_function { get; set; }
+		public String g_function {
+			get
+			{
+				return _g;
+			}
+			set
+			{
+				_g = value;
+				List<NPoint> ps = GFunction.getInstance().mapGValue.Values.ToList<NPoint>();
+				ps.Sort(
+					delegate (NPoint p1, NPoint p2)
+					{
+						BigInteger i1 = p1.toInt();
+						BigInteger i2 = p2.toInt();
+						return -i1.CompareTo(i2);
+					}
+				);
+				for (int i = 0; i < _g.Length; ++i)
+				{
+					ps[i].gfuncValue = int.Parse(_g.Substring(i, 1));
+				}
+			}
+		}
+		private String _g;
 
 		public Dictionary<BigInteger, NPoint> mapGValue { get; set; }
 		private GFunction()

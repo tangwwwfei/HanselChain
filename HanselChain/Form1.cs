@@ -32,7 +32,6 @@ namespace HanselChain
 
 		private void Start_Click(object sender, EventArgs e)
 		{
-			GFunction.getInstance().g_function = g_function.Text;//函数g
 			nDim = int.Parse(n_dim.Text); //维度
 			HanselChain hc1 = new HanselChain();
 			NPoint p1 = new NPoint();
@@ -59,6 +58,9 @@ namespace HanselChain
 			{
 				Console.Out.WriteLine(hc.ToString());
 			}
+			
+
+
 			InitPaintCube(nDim, forDesign);
 			functionInference = new FunctionInference(nDim, result);
 			Next.Text = "执行算法";
@@ -290,16 +292,18 @@ namespace HanselChain
 		private void CreateFunc_Click(object sender, EventArgs e)
 		{
 			GFunction.getInstance().mapGValue.Clear();
+
 			//所有点的G值设为0，并显示
 			foreach (HanselChain hc in forDesign)
 			{
-				foreach(NPoint p in hc.chain)
+				foreach (NPoint p in hc.chain)
 				{
 					p.gfuncValue = 0;
 					GFunction.getInstance().mapGValue.Add(p.toInt(), p);
 				}
 			}
 
+			GFunction.getInstance().g_function = g_function.Text;//函数g
 			CubeRepaint();
 		}
 
@@ -380,19 +384,20 @@ namespace HanselChain
 			String name = e.ClickedItem.Text;
 			int order = (int)e.ClickedItem.Tag;
 			GFunctionNode node = gLoadNodes[order];
-			List<NPoint> ps = GFunction.getInstance().mapGValue.Values.ToList<NPoint>();
-			ps.Sort(
-				delegate (NPoint p1, NPoint p2)
-				{
-					BigInteger i1 = p1.toInt();
-					BigInteger i2 = p2.toInt();
-					return i1.CompareTo(i2);
-				}
-			);
-			for(int i = 0; i < ps.Count; ++i)
-			{
-				ps[i].gfuncValue = node.points[i].gfuncValue;
-			}
+			GFunction.getInstance().g_function = node.gFunction;
+			//List<NPoint> ps = GFunction.getInstance().mapGValue.Values.ToList<NPoint>();
+			//ps.Sort(
+			//	delegate (NPoint p1, NPoint p2)
+			//	{
+			//		BigInteger i1 = p1.toInt();
+			//		BigInteger i2 = p2.toInt();
+			//		return i1.CompareTo(i2);
+			//	}
+			//);
+			//for(int i = 0; i < ps.Count; ++i)
+			//{
+			//	ps[i].gfuncValue = node.points[i].gfuncValue;
+			//}
 			CubeRepaint();
 		}
 

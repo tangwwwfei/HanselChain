@@ -4,9 +4,15 @@
     <value>00000000000000000000000000000000</value>
   </GFunction>
   <GFunction name="test" Dimension="5" date="2019/5/8 2:05:29">
-    <value>011111111111100001111111011000001</value>
+    <value>11111111111100001111111011000001</value>
   </GFunction>
-  <GFunction name="2019/5/8 13:54:40" Dimension="5" date="2019/5/8 13:54:41">
-    <value>00000000000000000000000000000000</value>
+  <GFunction name="2019/5/8 14:45:39" Dimension="5" date="2019/5/8 14:45:41">
+    <value>11111111111100001111111011000001</value>
+  </GFunction>
+  <GFunction name="2019/5/8 14:46:24" Dimension="5" date="2019/5/8 14:46:25">
+    <value>11111111111100001111111011000001</value>
+  </GFunction>
+  <GFunction name="2019/5/8 14:46:41" Dimension="5" date="2019/5/8 14:46:42">
+    <value>10010111111100001111111011000001</value>
   </GFunction>
 </GFunctions>

@@ -11,6 +11,7 @@ namespace HanselChain
 		public String name { get; set; }
 		public int nDim { get; set; }
 		public List<NPoint> points { get; set; }
+		public String gFunction { get; set; }
 		public GFunctionNode()
 		{
 			points = new List<NPoint>();
