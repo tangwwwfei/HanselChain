@@ -15,6 +15,8 @@ namespace HanselChain
 		{
 			const int nDim = 5;
 			int runTimes = 0;
+			int totalCount = 0;
+			int incorrectCount = 0;
 			DateTime startTime = DateTime.Now;
 			List<HanselChain> hcs = GenerateCube.GenerateNdimCubeAndHanselChain(nDim);
 			FunctionInference functionInference = new FunctionInference();
@@ -35,6 +37,7 @@ namespace HanselChain
 				var gs = e.Elements("g");
 				foreach (var g in gs)
 				{
+					totalCount++;
 					String gfunc = g.Value;
 					GFunction.getInstance().g_function = gfunc;
 					functionInference.RunAlgorithm(null, nDim, hcs);
@@ -52,15 +55,17 @@ namespace HanselChain
 					}
 					if (!f.Equals(getf) || functionInference.asked.Count > 20)
 					{
+						++incorrectCount;
 						Console.Out.WriteLine("g:{0},getf:{1},pf:{2},count:{3}", gfunc, getf, f, functionInference.asked.Count);
 					}
 					++runTimes;
 					if (runTimes % 1000 == 0)
 					{
-						Console.Out.WriteLine("运行{0}次!用时{1}", runTimes, (DateTime.Now-startTime).ToString());
+						Console.Out.WriteLine("{0} times.  Time usage:{1}.  IncorrectCount:{2}.", runTimes, (DateTime.Now-startTime).ToString(), incorrectCount);
 					}
 				}
 			}
+			Console.Out.WriteLine("Test finished. Total:{0}", totalCount);
 		}
 	}
 }

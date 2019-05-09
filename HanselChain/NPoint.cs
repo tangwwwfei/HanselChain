@@ -17,7 +17,7 @@ namespace HanselChain
 	{
 		public HanselChain belong { get; set; }
 		//public int N { get; set; }
-		public List<int> x { get; set; }
+		public List<int> x { get; set; }	//坐标值
 		public Point drawPoint { get; set; }
 		public int? gfuncValue { get; set; }    //函数初始值为NULL
 		public int? ffuncValue { get; set; }	//函数初始值为NULL

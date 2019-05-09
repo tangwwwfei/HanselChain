@@ -428,13 +428,16 @@ namespace HanselChain
 			{
 				if (alpha.x[i] == 0)
 				{
-					NPoint upoint = alpha.DeepClone();
-					upoint.x[i] = 1;
+					//x[] = 10010
+					//
+					//NPoint upoint = alpha.DeepClone();
+					alpha.x[i] = 1;
 					NPoint val;
-					if (allPoints.TryGetValue(upoint.toInt(), out val))
+					if (allPoints.TryGetValue(alpha.toInt(), out val))
 					{
 						alpha.upper.Add(val);
 					}
+					alpha.x[i] = 0;
 				}
 			}
 			return alpha.upper;
@@ -451,13 +454,14 @@ namespace HanselChain
 			{
 				if (alpha.x[i] == 1)
 				{
-					NPoint dpoint = alpha.DeepClone();
-					dpoint.x[i] = 0;
+					//NPoint dpoint = alpha.DeepClone();
+					alpha.x[i] = 0;
 					NPoint val;
-					if (allPoints.TryGetValue(dpoint.toInt(), out val))
+					if (allPoints.TryGetValue(alpha.toInt(), out val))
 					{
 						alpha.lower.Add(val);
 					}
+					alpha.x[i] = 1;
 				}
 			}
 			return alpha.lower;
