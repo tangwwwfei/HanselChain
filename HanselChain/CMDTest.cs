@@ -52,7 +52,7 @@ namespace HanselChain
 					}
 					if (!f.Equals(getf) || functionInference.asked.Count > 20)
 					{
-						Console.Out.WriteLine("g:{0},f:{1}", gfunc, f);
+						Console.Out.WriteLine("g:{0},getf:{1},pf:{2},count:{3}", gfunc, getf, f, functionInference.asked.Count);
 					}
 					++runTimes;
 					if (runTimes % 1000 == 0)

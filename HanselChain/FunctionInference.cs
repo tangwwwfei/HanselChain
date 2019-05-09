@@ -10,6 +10,11 @@ using System.Threading;
 
 namespace HanselChain
 {
+	class UnhandledReverseOrder
+	{
+		public NPoint alpha { get; set; }
+		public NPoint beta { get; set; }
+	}
 	class FunctionInference
 	{
 		List<HanselChain> HanselChains { set; get; }
@@ -19,12 +24,14 @@ namespace HanselChain
 		public List<NPoint> B { get; }
 		public List<NPoint> Diff { set; get; }
 		public List<NPoint> asked { get; }
+
+		List<UnhandledReverseOrder> unhandledReverseOrders { get; set; }
 		public NPoint G {
 			get { return _G; }
 		}
 		private NPoint _G;
 		int nDim { get; set; }
-
+		bool isFromList;
 		//
 		AutoResetEvent runal;
 		public FunctionInference()
@@ -32,6 +39,7 @@ namespace HanselChain
 			A = new List<NPoint>();
 			B = new List<NPoint>();
 			asked = new List<NPoint>();
+			unhandledReverseOrders = new List<UnhandledReverseOrder>();
 		}
 
 		public int RunAlgorithm(AutoResetEvent runal, int dim, List<HanselChain> chains)
@@ -40,6 +48,7 @@ namespace HanselChain
 			B.Clear();
 			asked.Clear();
 			allPoints.Clear();
+			unhandledReverseOrders.Clear();
 			Diff = null;
 			_G = null;
 
@@ -86,6 +95,14 @@ namespace HanselChain
 				asked.Add(alpha_i);
 
 				//2.查看是否出现逆序对
+				//先判断是否有之前未处理的逆序对
+				isFromList = true;
+				foreach (var reverseOrder in unhandledReverseOrders)
+				{
+					HandleReverseOrder(reverseOrder.alpha, reverseOrder.beta);
+				}
+				isFromList = false;
+				//
 				bool bReverseOrder = false;
 				NPoint getVal = null;
 				if (val == 1)
@@ -358,6 +375,18 @@ namespace HanselChain
 					//	p.ffuncValue = 0;
 					//	AddPointToA(p);
 					//}
+				}
+				else
+				{
+					//两个条件都不满足
+					//保存这个逆序对到逆序list当中
+					if (!isFromList)
+					{
+						UnhandledReverseOrder uro = new UnhandledReverseOrder();
+						uro.alpha = alpha;
+						uro.beta = beta;
+						unhandledReverseOrders.Add(uro);
+					}
 				}
 			}
 		}
